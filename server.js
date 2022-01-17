@@ -22,7 +22,7 @@ mongoose.connect(connectionString, mongooseOptions, error => {
         console.log("Mongo connected");
     }
 });
-if(process.argv[2]) {
+if (process.argv[2]) {
     init()
 }
 amqp.connect('amqp://admin:Appsim2020@103.141.144.199:5672', function (error0, connection) {
@@ -45,7 +45,8 @@ amqp.connect('amqp://admin:Appsim2020@103.141.144.199:5672', function (error0, c
             let getSims = await simModel.findOne({
                 sim: msg.content.toString()
             })
-            await run(getSims)
+            const success = await run(getSims)
+            console.log(success);
             getSims.count_search += 1
             getSims.success += 1
             await simModel.findOneAndUpdate({
