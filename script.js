@@ -21,7 +21,11 @@ const run = async (sim) => {
         })
         await page.goto("https://google.com.vn/search?num=100&q=" + sim.sim + "&gs_l=hp.3..35i39j0l9.927987.928835.0.929090.13.10.0.0.0.0.317.858.1j2j1j1.5.0.ecynfh...0...1.1.64.hp..11.2.332.0.WxTlrXXGTOc");
         console.log("WAITNG----")
+        
         await sleep(5000)
+        if(page.$("#captcha-form")){
+            console.log(false);
+        }
         await browser.close()
     } catch (error) {
     }
