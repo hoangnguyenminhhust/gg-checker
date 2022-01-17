@@ -22,7 +22,9 @@ mongoose.connect(connectionString, mongooseOptions, error => {
         console.log("Mongo connected");
     }
 });
-
+if(process.argv[2]) {
+    init()
+}
 amqp.connect('amqp://admin:Appsim2020@103.141.144.199:5672', function (error0, connection) {
     if (error0) {
         throw error0;

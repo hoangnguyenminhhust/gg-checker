@@ -8,7 +8,7 @@ const run = async (sim) => {
         console.log("RUNING SIM: " , sim.sim)
         const browser = await puppeteer.launch({
             headless: true,
-            userDataDir: '/home/admin/Documents/dth/increase-search/dataDir',
+            userDataDir: '/tmp/userDir',
             ignoreDefaultArgs: ['--disable-extensions'],
             args: [`--window-size=1600,1600`, '--no-sandbox', '--disable-setuid-sandbox'],
             executablePath: '/usr/bin/chromium'
@@ -29,38 +29,43 @@ const run = async (sim) => {
 }
 
 const init = async () => {
-    const browser = await puppeteer.launch({
-        headless: false,
-        userDataDir: '/home/admin/Documents/dth/increase-search/dataDir',
-        ignoreDefaultArgs: ['--disable-extensions'],
-        args: [`--window-size=1600,1600`, '--no-sandbox', '--disable-setuid-sandbox'],
-        executablePath: '/usr/bin/chromium'
-    });
 
-    await browser.userAgent()
-    const page = await browser.newPage();
-    await page.goto('https://accounts.google.com/')
-
-    await page.waitForSelector('input[type="email"]')
-    await page.click('input[type="email"]')
-
-    await page.type('input[type="email"]', 'devops.hust@gmail.com')
-
-    await page.waitForSelector('#identifierNext')
-    await page.click('#identifierNext')
-
-    await page.waitFor(500);
-
-    await page.waitForSelector('input[type="password"]')
-    await page.click('input[type="email"]')
-    await page.waitFor(500);
-
-    await page.type('input[type="password"]', '1chapnhandi')
-
-    await page.waitForSelector('#passwordNext')
-    await page.click('#passwordNext')
-    await sleep(3000)
-    await browser.close()
+    try {
+        const browser = await puppeteer.launch({
+            headless: false,
+            userDataDir: '/tmp/userDir',
+            ignoreDefaultArgs: ['--disable-extensions'],
+            args: [`--window-size=1600,1600`, '--no-sandbox', '--disable-setuid-sandbox'],
+            executablePath: '/usr/bin/chromium'
+        });
+    
+        await browser.userAgent()
+        const page = await browser.newPage();
+        await page.goto('https://accounts.google.com/')
+    
+        await page.waitForSelector('input[type="email"]')
+        await page.click('input[type="email"]')
+    
+        await page.type('input[type="email"]', 'devops.hust@gmail.com')
+    
+        await page.waitForSelector('#identifierNext')
+        await page.click('#identifierNext')
+    
+        await page.waitFor(500);
+    
+        await page.waitForSelector('input[type="password"]')
+        await page.click('input[type="email"]')
+        await page.waitFor(500);
+    
+        await page.type('input[type="password"]', '1chapnhandi')
+    
+        await page.waitForSelector('#passwordNext')
+        await page.click('#passwordNext')
+        await sleep(3000)
+        await browser.close()
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 function sleep(ms) {
