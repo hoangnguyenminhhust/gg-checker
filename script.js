@@ -8,7 +8,7 @@ const run = async (sim) => {
         console.log("RUNING SIM: ", sim.sim)
         const browser = await puppeteer.launch({
             headless: true,
-            userDataDir: '/tmp/userDir',
+            userDataDir: './userDir',
             ignoreDefaultArgs: ['--disable-extensions'],
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
             // executablePath: '/usr/bin/chromium'
