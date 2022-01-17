@@ -48,11 +48,11 @@ const init = async () => {
 
     try {
         const browser = await puppeteer.launch({
-            headless: false,
+            headless: true,
             userDataDir: './userDir',
             ignoreDefaultArgs: ['--disable-extensions'],
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
-            // executablePath: '/usr/bin/chromium'
+            executablePath: '/usr/bin/chromium'
         });
 
         await browser.userAgent()
@@ -78,7 +78,7 @@ const init = async () => {
         await page.waitForSelector('#passwordNext')
         await page.click('#passwordNext')
         await sleep(3000)
-        // await browser.close()
+        await browser.close()
     } catch (error) {
         console.log(error)
     }
