@@ -10,7 +10,7 @@ const run = async (sim) => {
             headless: true,
             userDataDir: '/tmp/userDir',
             ignoreDefaultArgs: ['--disable-extensions'],
-            args: [`--window-size=1600,1600`, '--no-sandbox', '--disable-setuid-sandbox'],
+            args: [ '--no-sandbox', '--disable-setuid-sandbox'],
             // executablePath: '/usr/bin/chromium'
         });
         const page = await browser.newPage();
@@ -35,7 +35,7 @@ const init = async () => {
             headless: false,
             userDataDir: '/tmp/userDir',
             ignoreDefaultArgs: ['--disable-extensions'],
-            args: [`--window-size=1600,1600`, '--no-sandbox', '--disable-setuid-sandbox'],
+            args: [ '--no-sandbox', '--disable-setuid-sandbox'],
             // executablePath: '/usr/bin/chromium'
         });
     
