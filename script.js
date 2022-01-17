@@ -31,7 +31,7 @@ const run = async (sim) => {
                 };
             }
         )))
-        if (list.length === 0) {
+        if (linkList.length === 0) {
             await browser.close()
             return false;
         } else {
