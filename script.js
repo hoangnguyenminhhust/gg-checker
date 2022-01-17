@@ -23,11 +23,18 @@ const run = async (sim) => {
         console.log("WAITNG----")
         
         await sleep(5000)
-        if(page.$("#captcha-form")){
-            console.log(false);
-        }
+        const linkList = await page.$$eval('#rso > div', (parents => parents.map(
+            (p) => {
+                const a = p.querySelector('div > div > div > a');
+                return {
+                    link: a.href
+                };
+            }
+        )))
+        console.log(linkList)
         await browser.close()
     } catch (error) {
+        console.log(error)
     }
 
 }
