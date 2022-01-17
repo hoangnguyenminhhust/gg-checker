@@ -11,7 +11,7 @@ const run = async (sim) => {
             userDataDir: '/tmp/userDir',
             ignoreDefaultArgs: ['--disable-extensions'],
             args: [`--window-size=1600,1600`, '--no-sandbox', '--disable-setuid-sandbox'],
-            executablePath: '/usr/bin/chromium'
+            // executablePath: '/usr/bin/chromium'
         });
         const page = await browser.newPage();
         await useProxy(page, 'http://appsim-rotate:zsse9nacovvu@p.webshare.io');
@@ -36,7 +36,7 @@ const init = async () => {
             userDataDir: '/tmp/userDir',
             ignoreDefaultArgs: ['--disable-extensions'],
             args: [`--window-size=1600,1600`, '--no-sandbox', '--disable-setuid-sandbox'],
-            executablePath: '/usr/bin/chromium'
+            // executablePath: '/usr/bin/chromium'
         });
     
         await browser.userAgent()
