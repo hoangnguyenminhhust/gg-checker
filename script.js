@@ -32,7 +32,7 @@ const init = async () => {
 
     try {
         const browser = await puppeteer.launch({
-            headless: false,
+            headless: true,
             userDataDir: '/tmp/userDir',
             ignoreDefaultArgs: ['--disable-extensions'],
             args: [ '--no-sandbox', '--disable-setuid-sandbox'],
